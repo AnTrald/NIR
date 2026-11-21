@@ -1,0 +1,3837 @@
+[
+  {
+    "name": "empty",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "expected": {
+      "valid": true,
+      "sha256": "a6827fa5ee7dd1e53f7e3ae44fdd6abacf07a084d640d8e03e12f7bfb107fb35",
+      "canonical_bytes": 117
+    }
+  },
+  {
+    "name": "all-types-and-unicode",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "expected": {
+      "valid": true,
+      "sha256": "992bba62c0911473e6d739e9ccf73742dfe98ad65cae68ab3e849ef4be685e94",
+      "canonical_bytes": 820
+    }
+  },
+  {
+    "name": "optional-defaults",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "title"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "876297893c2035d19716b781fd3fffa6fb99bf2ede27e8b371c81aa4fd31088c",
+      "canonical_bytes": 808
+    }
+  },
+  {
+    "name": "ascii-whitespace-preserved",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "title"
+        ],
+        "value": " \tA\r\n "
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "e8e2b3fa01d63e3de3a76bf0a66e3b9796c08420a8254524c9f01de8caddcf02",
+      "canonical_bytes": 810
+    }
+  },
+  {
+    "name": "non-ascii-space-is-title",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "title"
+        ],
+        "value": " "
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "0344c65f0e97d34831b6e76ae9bb8fa31045c66cbe866e4ca87e2a199760dc56",
+      "canonical_bytes": 803
+    }
+  },
+  {
+    "name": "emoji-title-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "title"
+        ],
+        "repeat": "😀",
+        "count": 200
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "ede941cff490d81cda71835c9b167553933fd41fd960b0db2ea90033c22ba9b1",
+      "canonical_bytes": 1601
+    }
+  },
+  {
+    "name": "emoji-title-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "title"
+        ],
+        "repeat": "😀",
+        "count": 201
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/metadata/title"
+    }
+  },
+  {
+    "name": "description-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "description"
+        ],
+        "repeat": "😀",
+        "count": 2000
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "261a5dceb5bec2f7c91f76ba4d70f6d8680e0d11d41ed3b1d79ccdccb2bd6122",
+      "canonical_bytes": 8775
+    }
+  },
+  {
+    "name": "description-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "description"
+        ],
+        "repeat": "😀",
+        "count": 2001
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/metadata/description"
+    }
+  },
+  {
+    "name": "cell-title-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "title"
+        ],
+        "repeat": "😀",
+        "count": 200
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "d55d6d7b9de21e70fca37d352d03d8e7611aff28eb96baa1d53ee993f0ca8f1e",
+      "canonical_bytes": 1608
+    }
+  },
+  {
+    "name": "cell-title-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "title"
+        ],
+        "repeat": "😀",
+        "count": 201
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/cells/1/title"
+    }
+  },
+  {
+    "name": "comment-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "metadata",
+          "comment"
+        ],
+        "repeat": "😀",
+        "count": 2000
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "7b7da2dd982fb871d4df74279099daa2c0ebad4d1f6f91114c019b1822707224",
+      "canonical_bytes": 8820
+    }
+  },
+  {
+    "name": "comment-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "metadata",
+          "comment"
+        ],
+        "repeat": "😀",
+        "count": 2001
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/cells/1/metadata/comment"
+    }
+  },
+  {
+    "name": "source-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "source"
+        ],
+        "repeat": "😀",
+        "count": 100000
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "1bd9a33d1956800a624953a674e38d6060295ee6d4118d763fdca7e97ab24d81",
+      "canonical_bytes": 400757
+    }
+  },
+  {
+    "name": "source-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "source"
+        ],
+        "repeat": "😀",
+        "count": 100001
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/cells/1/source"
+    }
+  },
+  {
+    "name": "id-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "id"
+        ],
+        "repeat": "A",
+        "count": 64
+      }
+    ],
+    "expected": {
+      "valid": true,
+      "sha256": "79a69629c029c44207fa1d8d56b5216cda9d5fe74d90b14b86b90fe62eeac2a5",
+      "canonical_bytes": 878
+    }
+  },
+  {
+    "name": "id-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "id"
+        ],
+        "repeat": "A",
+        "count": 65
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/cells/1/id"
+    }
+  },
+  {
+    "name": "cells-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "cells_recipe": {
+      "count": 200
+    },
+    "expected": {
+      "valid": true,
+      "sha256": "7464f1e3ff73b52e00944c74fa4dd7c7765a98b62816b5b05cb353ccaafb9ff7",
+      "canonical_bytes": 22806
+    }
+  },
+  {
+    "name": "cells-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "cells_recipe": {
+      "count": 201
+    },
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/cells"
+    }
+  },
+  {
+    "name": "total-source-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "cells_recipe": {
+      "count": 10,
+      "source": "😀",
+      "length": 100000
+    },
+    "expected": {
+      "valid": true,
+      "sha256": "c2c18c6112e128b1359607133f0164337383b7df15b2aa9a4a8931ab2c4e2435",
+      "canonical_bytes": 4001236
+    }
+  },
+  {
+    "name": "total-source-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "cells_recipe": {
+      "count": 11,
+      "source": "A",
+      "length": 100000
+    },
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": "/cells"
+    }
+  },
+  {
+    "name": "input-byte-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "pad_to": 5242880,
+    "expected": {
+      "valid": true,
+      "sha256": "a6827fa5ee7dd1e53f7e3ae44fdd6abacf07a084d640d8e03e12f7bfb107fb35",
+      "canonical_bytes": 117
+    }
+  },
+  {
+    "name": "input-byte-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "pad_to": 5242881,
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": ""
+    }
+  },
+  {
+    "name": "canonical-byte-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "cells_recipe": {
+      "count": 9
+    },
+    "expected": {
+      "valid": true,
+      "sha256": "09aa052f8296afc8a02c65746b104cdc49918d97fdfd92e46d561d9d0a74857d",
+      "canonical_bytes": 5242880
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          1,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          2,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          3,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          4,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          5,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          6,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          7,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          8,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 73626
+      },
+      {
+        "path": [
+          "cells",
+          0,
+          "title"
+        ],
+        "value": ""
+      }
+    ]
+  },
+  {
+    "name": "canonical-byte-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "cells_recipe": {
+      "count": 9
+    },
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": ""
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          1,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          2,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          3,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          4,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          5,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          6,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          7,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 100000
+      },
+      {
+        "path": [
+          "cells",
+          8,
+          "source"
+        ],
+        "repeat": "\u0001",
+        "count": 73626
+      },
+      {
+        "path": [
+          "cells",
+          0,
+          "title"
+        ],
+        "value": "a"
+      }
+    ]
+  },
+  {
+    "name": "wrong-format",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "format"
+        ],
+        "value": "other"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_format",
+      "path": "/format"
+    }
+  },
+  {
+    "name": "future-version",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "version"
+        ],
+        "value": "2.0"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unsupported_version",
+      "path": "/version"
+    }
+  },
+  {
+    "name": "numeric-version",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "version"
+        ],
+        "value": 1.0
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unsupported_version",
+      "path": "/version"
+    }
+  },
+  {
+    "name": "empty-title",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "title"
+        ],
+        "value": ""
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/metadata/title"
+    }
+  },
+  {
+    "name": "blank-title",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "title"
+        ],
+        "value": " \t\r\n\f\u000b"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/metadata/title"
+    }
+  },
+  {
+    "name": "description-null",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "description"
+        ],
+        "value": null
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/metadata/description"
+    }
+  },
+  {
+    "name": "unknown-root",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "owner_id"
+        ],
+        "value": "private"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unknown_field",
+      "path": "/owner_id"
+    }
+  },
+  {
+    "name": "unknown-metadata",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata",
+          "revision"
+        ],
+        "value": 1
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unknown_field",
+      "path": "/metadata/revision"
+    }
+  },
+  {
+    "name": "unknown-cell",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0,
+          "result"
+        ],
+        "value": "private"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unknown_field",
+      "path": "/cells/0/result"
+    }
+  },
+  {
+    "name": "unknown-cell-metadata",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0,
+          "metadata",
+          "other"
+        ],
+        "value": 1
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unknown_field",
+      "path": "/cells/0/metadata/other"
+    }
+  },
+  {
+    "name": "pointer-escape",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0,
+          "metadata",
+          "a~/b"
+        ],
+        "value": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unknown_field",
+      "path": "/cells/0/metadata/a~0~1b"
+    }
+  },
+  {
+    "name": "prototype-key",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "__proto__"
+        ],
+        "value": {}
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unknown_field",
+      "path": "/__proto__"
+    }
+  },
+  {
+    "name": "markdown-enabled",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0,
+          "enabled"
+        ],
+        "value": false
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unknown_field",
+      "path": "/cells/0/enabled"
+    }
+  },
+  {
+    "name": "string-enabled",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "enabled"
+        ],
+        "value": "true"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/enabled"
+    }
+  },
+  {
+    "name": "numeric-enabled",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "enabled"
+        ],
+        "value": 1
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/enabled"
+    }
+  },
+  {
+    "name": "null-enabled",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "enabled"
+        ],
+        "value": null
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/enabled"
+    }
+  },
+  {
+    "name": "string-collapsed",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "metadata",
+          "collapsed"
+        ],
+        "value": "false"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/metadata/collapsed"
+    }
+  },
+  {
+    "name": "null-cell-metadata",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "metadata"
+        ],
+        "value": null
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/metadata"
+    }
+  },
+  {
+    "name": "unknown-type",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0,
+          "type"
+        ],
+        "value": "python"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/0/type"
+    }
+  },
+  {
+    "name": "duplicate-id",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "id"
+        ],
+        "value": "cell-1"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "duplicate_cell_id",
+      "path": "/cells/1/id"
+    }
+  },
+  {
+    "name": "id-newline",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "id"
+        ],
+        "value": "valid\n"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/id"
+    }
+  },
+  {
+    "name": "id-leading-dash",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "id"
+        ],
+        "value": "-invalid"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/id"
+    }
+  },
+  {
+    "name": "id-unicode",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "id"
+        ],
+        "value": "ячейка"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/id"
+    }
+  },
+  {
+    "name": "id-empty",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "id"
+        ],
+        "value": ""
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/id"
+    }
+  },
+  {
+    "name": "source-number",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "source"
+        ],
+        "value": 12
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/source"
+    }
+  },
+  {
+    "name": "null-byte",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "source"
+        ],
+        "value": "\u0000"
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": "/cells/1/source"
+    }
+  },
+  {
+    "name": "null-cell",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0
+        ],
+        "value": null
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/0"
+    }
+  },
+  {
+    "name": "array-cell",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          0
+        ],
+        "value": []
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/0"
+    }
+  },
+  {
+    "name": "null-cells",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells"
+        ],
+        "value": null
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells"
+    }
+  },
+  {
+    "name": "missing-format",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "format"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_format",
+      "path": "/format"
+    }
+  },
+  {
+    "name": "missing-version",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "version"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "unsupported_version",
+      "path": "/version"
+    }
+  },
+  {
+    "name": "missing-metadata",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "metadata"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/metadata"
+    }
+  },
+  {
+    "name": "missing-cells",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells"
+    }
+  },
+  {
+    "name": "missing-source",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "source"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/source"
+    }
+  },
+  {
+    "name": "missing-cell-type",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "type"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/type"
+    }
+  },
+  {
+    "name": "missing-enabled",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": " Юникод 😀 ",
+        "description": "Описание\r\nбез изменений"
+      },
+      "cells": [
+        {
+          "id": "cell-1",
+          "type": "markdown",
+          "source": "# Заголовок 😀\r\n\t`код`\n",
+          "metadata": {}
+        },
+        {
+          "id": "cell-2",
+          "type": "html",
+          "title": "Кнопка",
+          "source": "<button onclick=\"alert('Привет')\">Привет</button>",
+          "enabled": true,
+          "metadata": {}
+        },
+        {
+          "id": "cell-3",
+          "type": "css",
+          "source": "body { color: red; }\n",
+          "enabled": false,
+          "metadata": {
+            "comment": "Выключено",
+            "collapsed": true
+          }
+        },
+        {
+          "id": "cell-4",
+          "type": "javascript",
+          "source": "throw new Error('НЕ ВЫПОЛНЯТЬ');\nconsole.log('😀');",
+          "enabled": true,
+          "metadata": {}
+        }
+      ]
+    },
+    "patches": [
+      {
+        "path": [
+          "cells",
+          1,
+          "enabled"
+        ],
+        "delete": true
+      }
+    ],
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": "/cells/1/enabled"
+    }
+  },
+  {
+    "name": "root-array",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "[]",
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": ""
+    }
+  },
+  {
+    "name": "root-null",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "null",
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": ""
+    }
+  },
+  {
+    "name": "root-number",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "1",
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": ""
+    }
+  },
+  {
+    "name": "empty-input",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "trailing-comma",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{\"format\":\"web-notebook\",}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "trailing-array-comma",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "[1,]",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "comment",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "/* comment */{}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "trailing-document",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{}{}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "nan",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "NaN",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "infinity",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "Infinity",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "number-overflow",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "1e400",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "leading-zero",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "01",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "bad-escape",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "\"\\q\"",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "bom",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "﻿{\"format\":\"web-notebook\",\"version\":\"1.0\",\"metadata\":{\"title\":\"Без названия\"},\"cells\":[]}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "duplicate-key",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{\"format\":\"web-notebook\",\"format\":\"web-notebook\"}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": "/format"
+    }
+  },
+  {
+    "name": "escaped-duplicate-key",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{\"metadata\":{\"title\":\"a\",\"\\u0074itle\":\"b\"}}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": "/metadata/title"
+    }
+  },
+  {
+    "name": "unpaired-high-surrogate",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{\"x\":\"\\ud800\"}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": "/x"
+    }
+  },
+  {
+    "name": "unpaired-low-surrogate",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{\"x\":\"\\udfff\"}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": "/x"
+    }
+  },
+  {
+    "name": "nul-key",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{\"\\u0000\":1}",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": "/\u0000"
+    }
+  },
+  {
+    "name": "depth-limit",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "[[[[[[[[[[[[[[[[0]]]]]]]]]]]]]]]]",
+    "expected": {
+      "valid": false,
+      "code": "invalid_field",
+      "path": ""
+    }
+  },
+  {
+    "name": "depth-over",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "[[[[[[[[[[[[[[[[[0]]]]]]]]]]]]]]]]]",
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": ""
+    }
+  },
+  {
+    "name": "extreme-depth",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[0]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]",
+    "expected": {
+      "valid": false,
+      "code": "limit_exceeded",
+      "path": ""
+    }
+  },
+  {
+    "name": "broken-utf8",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "base64": "Iv8i",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "overlong-utf8",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "base64": "IsCAIg==",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "utf8-surrogate",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "base64": "Iu2ggCI=",
+    "expected": {
+      "valid": false,
+      "code": "invalid_json",
+      "path": ""
+    }
+  },
+  {
+    "name": "escaped-surrogate-pair",
+    "document": {
+      "format": "web-notebook",
+      "version": "1.0",
+      "metadata": {
+        "title": "Без названия"
+      },
+      "cells": []
+    },
+    "raw": "{\"format\":\"web-notebook\",\"version\":\"1.0\",\"metadata\":{\"title\":\"\\ud83d\\ude00\"},\"cells\":[]}",
+    "expected": {
+      "valid": true,
+      "sha256": "dea5e84bc49567bd0d10407b721cd514cf881b0dcaee42f83be152a49b305b3f",
+      "canonical_bytes": 98
+    }
+  }
+]

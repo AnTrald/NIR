@@ -1,0 +1,274 @@
+{
+  "$defs": {
+    "CellMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "comment": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Comment",
+          "type": "string"
+        },
+        "collapsed": {
+          "default": false,
+          "title": "Collapsed",
+          "type": "boolean"
+        }
+      },
+      "title": "CellMetadata",
+      "type": "object"
+    },
+    "CssCell": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "not": {
+            "pattern": "[^A-Za-z0-9_-]"
+          },
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Title",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 100000,
+          "title": "Source",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/$defs/CellMetadata"
+        },
+        "type": {
+          "const": "css",
+          "title": "Type",
+          "type": "string"
+        },
+        "enabled": {
+          "title": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "metadata",
+        "type",
+        "enabled"
+      ],
+      "title": "CssCell",
+      "type": "object"
+    },
+    "DocumentMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 200,
+          "minLength": 1,
+          "pattern": "[^ \\t\\n\\r\\f\\v]",
+          "title": "Title",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 2000,
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "title": "DocumentMetadata",
+      "type": "object"
+    },
+    "HtmlCell": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "not": {
+            "pattern": "[^A-Za-z0-9_-]"
+          },
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Title",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 100000,
+          "title": "Source",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/$defs/CellMetadata"
+        },
+        "type": {
+          "const": "html",
+          "title": "Type",
+          "type": "string"
+        },
+        "enabled": {
+          "title": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "metadata",
+        "type",
+        "enabled"
+      ],
+      "title": "HtmlCell",
+      "type": "object"
+    },
+    "JavascriptCell": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "not": {
+            "pattern": "[^A-Za-z0-9_-]"
+          },
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Title",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 100000,
+          "title": "Source",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/$defs/CellMetadata"
+        },
+        "type": {
+          "const": "javascript",
+          "title": "Type",
+          "type": "string"
+        },
+        "enabled": {
+          "title": "Enabled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "metadata",
+        "type",
+        "enabled"
+      ],
+      "title": "JavascriptCell",
+      "type": "object"
+    },
+    "MarkdownCell": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "not": {
+            "pattern": "[^A-Za-z0-9_-]"
+          },
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "title": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Title",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 100000,
+          "title": "Source",
+          "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/$defs/CellMetadata"
+        },
+        "type": {
+          "const": "markdown",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "metadata",
+        "type"
+      ],
+      "title": "MarkdownCell",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": "web-notebook",
+      "title": "Format",
+      "type": "string"
+    },
+    "version": {
+      "const": "1.0",
+      "title": "Version",
+      "type": "string"
+    },
+    "metadata": {
+      "$ref": "#/$defs/DocumentMetadata"
+    },
+    "cells": {
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/MarkdownCell"
+          },
+          {
+            "$ref": "#/$defs/HtmlCell"
+          },
+          {
+            "$ref": "#/$defs/CssCell"
+          },
+          {
+            "$ref": "#/$defs/JavascriptCell"
+          }
+        ]
+      },
+      "maxItems": 200,
+      "title": "Cells",
+      "type": "array"
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "metadata",
+    "cells"
+  ],
+  "title": "Document",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

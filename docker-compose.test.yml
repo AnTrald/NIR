@@ -1,0 +1,14 @@
+# Дополнение только для запуска backend-тестов через compose run.
+# Отдельное имя образа сохраняет production-образ backend неизменным.
+services:
+  backend:
+    image: web-notebook-backend-tests:local
+    build:
+      target: test
+    environment:
+      WEBNB_CONTRACT_ROOT: /
+      TEST_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-web_notebook}:${POSTGRES_PASSWORD:?Run scripts/init-env.ps1 first}@db:5432/${POSTGRES_DB:-web_notebook}
+    volumes:
+      - ./contracts:/contracts:ro
+      - ./schemas:/schemas:ro
+    command: ["pytest", "-q"]
