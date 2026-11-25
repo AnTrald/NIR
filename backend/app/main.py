@@ -7,8 +7,10 @@ from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException
 
 from app.api.health import router as health_router
+from app.api.notebook import router as notebook_router
+from app.api.preview import router as preview_router
 from app.core.config import Settings
-from app.db.session import create_database_engine
+from app.storage import NotebookStore
 
 
 def error_response(request: Request, status: int, code: str, message: str) -> JSONResponse:
@@ -24,12 +26,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(application: FastAPI):
         configured = settings or Settings()
-        application.state.engine = create_database_engine(configured)
-        application.state.settings = configured
-        try:
-            yield
-        finally:
-            application.state.engine.dispose()
+        application.state.app_origin = configured.app_origin
+        application.state.store = NotebookStore(configured.notebook_path)
+        yield
 
     application = FastAPI(
         title="Web Notebook API",
@@ -67,6 +66,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     # В OpenAPI публикуются внешние пути, одинаковые у FastAPI и proxy Next.js.
     application.include_router(health_router, prefix="/api")
+    application.include_router(notebook_router, prefix="/api")
+    application.include_router(preview_router)
     # Короткие внутренние адреса сохраняются для Docker healthcheck.
     application.include_router(health_router, include_in_schema=False)
     return application

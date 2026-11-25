@@ -13,5 +13,6 @@ htmlcov/
 playwright-report/
 test-results/
 .artifacts/
+backend/data/
 .DS_Store
 Thumbs.db

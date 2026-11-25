@@ -1,9 +1,7 @@
 from typing import Literal
 
 from fastapi import APIRouter, HTTPException, Request
-from pydantic import BaseModel
-from sqlalchemy import text
-from sqlalchemy.exc import SQLAlchemyError
+from pydantic import BaseModel, ValidationError
 
 router = APIRouter(prefix="/health", tags=["Состояние сервиса"])
 
@@ -17,12 +15,10 @@ def live() -> HealthResponse:
     return HealthResponse(status="alive")
 
 
-@router.get("/ready", response_model=HealthResponse, responses={503: {"description": "База данных недоступна"}})
+@router.get("/ready", response_model=HealthResponse, responses={503: {"description": "Файловое хранилище недоступно"}})
 def ready(request: Request) -> HealthResponse:
     try:
-        with request.app.state.engine.connect() as connection:
-            connection.execute(text("SELECT 1")).scalar_one()
-    except SQLAlchemyError:
-        # Не передаём пользователю адрес БД, SQL или драйверную диагностику.
+        request.app.state.store.check_ready()
+    except (OSError, ValidationError):
         raise HTTPException(status_code=503, detail="Сервис временно недоступен") from None
     return HealthResponse(status="ready")

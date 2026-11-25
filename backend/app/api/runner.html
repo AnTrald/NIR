@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru" data-app-origin="__APP_ORIGIN__">
+<meta charset="utf-8"><title>Предпросмотр</title>
+<body><script>
+(() => {
+  "use strict";
+  const origin = document.documentElement.dataset.appOrigin;
+  const run = location.hash.slice(1);
+  if (parent === window || !/^[a-f0-9-]{36}$/.test(run)) return;
+  const channel = new MessageChannel();
+  const port = channel.port1;
+  const allowed = new Set("a abbr address article aside audio b bdi bdo blockquote br button canvas caption cite code col colgroup data datalist dd del details dfn dialog div dl dt em fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 header hgroup hr i img input ins kbd label legend li main mark menu meter nav ol optgroup option output p picture pre progress q rp rt ruby s samp section select small span strong style sub summary sup table tbody td textarea tfoot th thead time tr u ul var wbr".split(" "));
+  const attributes = new Set("id class title style role lang dir hidden tabindex name value type checked disabled selected multiple placeholder minlength maxlength min max step pattern required readonly for rows cols rowspan colspan span scope alt width height open datetime start reversed list contenteditable".split(" "));
+  let sent = 0;
+  function report(type, message, id = "", line = 1) {
+    if (sent >= 200) return;
+    port.postMessage({run, seq:++sent, type, message:String(message).slice(0,2000), id, line});
+  }
+  function fragment(cell) {
+    const template = document.createElement("template");
+    template.innerHTML = cell.source;
+    for (const node of template.content.querySelectorAll("*")) {
+      if (!template.content.contains(node)) continue;
+      const tag = node.localName;
+      if (node.namespaceURI !== "http://www.w3.org/1999/xhtml" || !allowed.has(tag)) {
+        report("warning", "Исключён тег <"+tag+">.", cell.id);
+        node.remove();
+        continue;
+      }
+      for (const {name,value} of Array.from(node.attributes)) {
+        if (attributes.has(name) || /^(data-|aria-|on[a-z]+$)/.test(name)) continue;
+        if (tag==="a" && name==="href" && value.startsWith("#")) continue;
+        if (tag==="img" && name==="src" && /^data:image\/(png|jpeg|gif|webp|avif);base64,/i.test(value)) continue;
+        node.removeAttribute(name);
+        report("warning", "Исключён атрибут "+name+" у <"+tag+">.",cell.id);
+      }
+    }
+    return template.content;
+  }
+  port.onmessage = ({data}) => {
+    if (!data || data.run!==run || data.type!=="init") return;
+    port.onmessage = null;
+    const {html,styles,scripts} = data.plan;
+    let current = "";
+    addEventListener("error", e=>{
+      const id = /^webnb-cell-([\w-]+)\.js$/.exec(e.filename || "")?.[1] || current;
+      report("error",e.message || "Ошибка выполнения",id,e.lineno || 1);
+    });
+    addEventListener("unhandledrejection",e=>report("error",String(e.reason)));
+    for (const level of ["log","info","warn","error"]) {
+      const original=console[level].bind(console);
+      console[level]=(...args)=>{
+        original(...args);
+        report("console",level+": "+args.map(arg=>typeof arg==="object"?"[объект]":String(arg)).join(" "),current);
+      };
+    }
+    function append(items,parentNode) {
+      for (const item of items) {
+        if (!item.children) { parentNode.append(fragment(item)); continue; }
+        const wrapper=document.createElement(item.tag);
+        if (item.classes) wrapper.className=item.classes;
+        append(item.children,wrapper);
+        parentNode.append(wrapper);
+      }
+    }
+    document.body.replaceChildren();
+    append(html,document.body);
+    for (const item of styles) {
+      const style=document.createElement("style");
+      style.textContent=item.source;
+      document.head.append(style);
+    }
+    for (const item of scripts) {
+      current=item.id;
+      const script=document.createElement("script");
+      script.textContent=item.source+"\n//# sourceURL=webnb-cell-"+item.id+".js";
+      document.body.append(script);
+    }
+    current="";
+    port.postMessage({type:"settled",run,seq:++sent});
+  };
+  // Порт принадлежит этому документу и не переходит следующей странице после навигации.
+  parent.postMessage({type:"webnb-ready",run}, origin, [channel.port2]);
+})();
+</script></body></html>

@@ -1,15 +1,11 @@
-import os
-
-import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import text
 
 from app.core.config import Settings
 from app.main import create_app
 
 
-def test_liveness_and_errors_do_not_require_database():
-    settings = Settings(database_url="postgresql+psycopg://probe:secret@127.0.0.1:1/probe")
+def test_liveness_and_errors_do_not_require_database(tmp_path):
+    settings = Settings(notebook_path=tmp_path / "notebook.json")
     with TestClient(create_app(settings)) as client:
         response = client.get("/health/live")
         assert response.status_code == 200
@@ -21,8 +17,9 @@ def test_liveness_and_errors_do_not_require_database():
         assert missing.json()["error"]["code"] == "not_found"
 
 
-def test_unreachable_database_returns_safe_503():
-    settings = Settings(database_url="postgresql+psycopg://probe:do-not-leak@127.0.0.1:1/probe")
+def test_unavailable_storage_returns_safe_503(tmp_path):
+    settings = Settings(notebook_path=tmp_path / "invalid" / "notebook.json")
+    settings.notebook_path.parent.write_text("do-not-leak")
     with TestClient(create_app(settings)) as client:
         response = client.get("/health/ready")
         assert response.status_code == 503
@@ -32,25 +29,20 @@ def test_unreachable_database_returns_safe_503():
         assert client.get("/health/live").status_code == 200
 
 
-@pytest.mark.integration
-def test_readiness_uses_real_postgresql():
-    database_url = os.environ.get("TEST_DATABASE_URL")
-    if not database_url:
-        pytest.skip("TEST_DATABASE_URL требуется для проверки PostgreSQL")
-    application = create_app(Settings(database_url=database_url))
+def test_readiness_uses_real_directory(tmp_path):
+    application = create_app(Settings(notebook_path=tmp_path / "notebook.json"))
     with TestClient(application) as client:
-        with application.state.engine.connect() as connection:
-            assert connection.execute(text("SHOW server_version")).scalar_one()
         assert client.get("/health/ready").json() == {"status": "ready"}
+        assert not list(tmp_path.iterdir())
 
 
-def test_swagger_uses_public_paths_and_current_origin():
-    settings = Settings(database_url="postgresql+psycopg://probe:secret@127.0.0.1:1/probe")
+def test_swagger_uses_public_paths_and_current_origin(tmp_path):
+    settings = Settings(notebook_path=tmp_path / "notebook.json")
     with TestClient(create_app(settings)) as client:
         response = client.get("/api/openapi.json")
         assert response.status_code == 200
         schema = response.json()
-        assert set(schema["paths"]) == {"/api/health/live", "/api/health/ready"}
+        assert set(schema["paths"]) == {"/api/health/live", "/api/health/ready", "/api/notebook"}
         assert schema["servers"][0]["url"] == "/"
         assert "backend:8000" not in response.text
         docs = client.get("/api/docs")

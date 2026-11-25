@@ -1,33 +1,17 @@
 name: web-notebook
 
 services:
-  db:
-    image: postgres:19.0-bookworm@sha256:f4859caf96de494e38efa69ed703b08a5bbd9605e152e604f2daec8841c87c41
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-web_notebook}
-      POSTGRES_USER: ${POSTGRES_USER:-web_notebook}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run scripts/init-env.ps1 first}
-    volumes:
-      - postgres_data:/var/lib/postgresql
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
-      interval: 5s
-      timeout: 3s
-      retries: 20
-      start_period: 10s
-
   backend:
     build:
       context: ./backend
       target: runtime
     environment:
-      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-web_notebook}:${POSTGRES_PASSWORD:?Run scripts/init-env.ps1 first}@db:5432/${POSTGRES_DB:-web_notebook}
+      NOTEBOOK_PATH: /app/data/notebook.json
       APP_ORIGIN: ${APP_ORIGIN:-http://localhost:3000}
       LOG_LEVEL: ${LOG_LEVEL:-info}
       UVICORN_LOG_LEVEL: ${LOG_LEVEL:-info}
-    depends_on:
-      db:
-        condition: service_healthy
+    volumes:
+      - notebook_data:/app/data
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=5)"]
       interval: 10s
@@ -52,4 +36,4 @@ services:
       start_period: 10s
 
 volumes:
-  postgres_data:
+  notebook_data:

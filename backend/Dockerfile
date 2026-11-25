@@ -20,6 +20,7 @@ COPY app ./app
 COPY notebook_engine ./notebook_engine
 COPY alembic ./alembic
 COPY alembic.ini ./
+RUN install -d -o notebook -g notebook /app/data
 USER notebook
 EXPOSE 8000
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--no-proxy-headers"]
